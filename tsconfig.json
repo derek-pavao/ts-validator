@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {},
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*.ts"
+    ],
+    "files": [
+        "./app/application-config.ts",
+        "./app/application-controller.ts",
+        "./app/components/add-todo/add-todo-controller.ts",
+        "./app/components/add-todo/add-todo.ts",
+        "./app/components/example/example-controller.ts",
+        "./app/components/todo-list/todo-list-controller.ts",
+        "./app/components/todo-list/todo-list.ts",
+        "./app/components/todo/todo-controller.ts",
+        "./app/**/*.ts",
+        "./app/main.ts",
+        "./app/models/todo.ts",
+        "./typings/angularjs/angular.d.ts",
+        "./typings/jquery/jquery.d.ts",
+        "./typings/node/node.d.ts"
+    ]
+}
