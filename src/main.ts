@@ -2,17 +2,11 @@
  * Created by dpavao on 4/28/15.
  */
 
-/**
- * Routeable Components
- */
+
+//import { ErrorReport } from './models/error-report';
 import { BaseModel } from './models/base-model';
-import { ErrorReport } from './models/error-report';
 import { IValidatorObject } from './interfaces/i-validator-object';
 import { NotEmptyValidator } from './validators/not-empty-validator';
+import { notEmpty } from './decorators/not-empty';
 
-export {
-    BaseModel,
-    ErrorReport,
-    IValidatorObject,
-    NotEmptyValidator
-};
+export { IValidatorObject, NotEmptyValidator, notEmpty , BaseModel };

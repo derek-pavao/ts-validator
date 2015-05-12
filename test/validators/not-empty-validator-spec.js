@@ -1,7 +1,6 @@
 
 import { NotEmptyValidator } from '../../.tmp/main';
 
-
 describe('NotEmptyValidator', function () {
 
     var notEmptyValidator;
@@ -31,5 +30,18 @@ describe('NotEmptyValidator', function () {
 
     it ('should treat an empty array as invalid', function () {
         expect(notEmptyValidator.validate([])).to.be.false;
-    })
+    });
+
+    it ('should treat a string with at least one character as valid', function () {
+        expect(notEmptyValidator.validate('d')).to.be.true;
+    });
+
+    it ('should treat objects with at least one property as valid', function () {
+        expect(notEmptyValidator.validate({test: false})).to.be.true;
+    });
+
+    it ('should treat arrays with at least one object as valid', function () {
+        expect(notEmptyValidator.validate(['test'])).to.be.true;
+    });
+
 });

@@ -26,7 +26,6 @@ module.exports = function(config) {
 
         jspm: {
             loadFiles: [
-                '.tmp/main.js',
                 'test/**/*-spec.js'
             ],
             serveFiles: [
@@ -59,7 +58,7 @@ module.exports = function(config) {
             options: {
                 optional: ['runtime'],
                 sourceMap: 'inline',
-                modules: 'system'
+                modules: 'amd'
             }
         },
 

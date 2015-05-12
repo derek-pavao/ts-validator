@@ -11,8 +11,8 @@ var tsProject = $.typescript.createProject({
     declarationFiles: true,
     noExternalResolve: true,
     typescript: require('typescript'),
-    sourceRoot: '/src/',
-    target: 'ES6'
+    module: 'amd',
+    target: 'ES5'
 });
 
 
@@ -28,6 +28,7 @@ gulp.task('typescript', function () {
     return tsResult.js
         .pipe($.sourcemaps.write('./', {
             debug: true,
+            srcRoot: '/src/',
             includeContent: true
         }))
         .pipe(gulp.dest('.tmp/'));
@@ -107,15 +108,11 @@ gulp.task('html-watcher', function () {
  * Main Tasks
  */
 gulp.task('watch', [
-    'typescript-watcher',
-    'html-watcher',
-    'scss-watcher'
+    'typescript-watcher'
 ]);
 
 gulp.task('dev-no-watch', [
-    'typescript',
-    'templatecache',
-    'scss'
+    'typescript'
 ]);
 
 gulp.task('dev', ['dev-no-watch'], function () {

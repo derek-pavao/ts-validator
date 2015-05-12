@@ -2,11 +2,15 @@ import { BaseModel } from '../main';
 import { IValidatorObject } from '../main';
 import { NotEmptyValidator } from '../main';
 
-function notEmpty (errorMessage: String) {
-    return function (target, name: String, descriptor) {
+export let notEmpty = function (errorMessage: String) {
+
+    return function (target: Object, name: string) {
+
 
         if (target instanceof BaseModel) {
 
+            target._validators = target._validators || {};
+            target._errorMessages = target._errorMessages || {};
             target._validators[name] = target._validators[name] || [];
             target._errorMessages[name] = target._errorMessages[name] || {};
 
@@ -19,4 +23,3 @@ function notEmpty (errorMessage: String) {
     }
 }
 
-export { notEmpty };
