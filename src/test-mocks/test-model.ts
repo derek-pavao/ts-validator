@@ -11,6 +11,5 @@ export class TestModel extends BaseModel {
     @notEmpty('Second test property can not be empty')
     public secondTestProperty: string;
 
-
 }
 

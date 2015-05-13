@@ -1,5 +1,4 @@
 import { BaseModel } from '../main';
-import { IValidatorObject } from '../main';
 import { NotEmptyValidator } from '../main';
 
 /**
