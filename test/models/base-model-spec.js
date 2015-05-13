@@ -18,9 +18,23 @@ describe ('BaseModel validate()', function () {
 
     it ('should return null if there were no errors', function () {
         testModel.testProperty = 'foo';
+        testModel.secondTestProperty = 'bar';
         var errorMap = testModel.validate();
-
         expect(errorMap).to.be.null
+    });
+
+    it ('should only validate one property if a property name is passed', function () {
+        testModel.testProperty = '';
+        var errorMap = testModel.validate('testProperty');
+        expect(errorMap).to.not.be.null;
+        expect(errorMap.secondTestProperty).to.be.undefined;
+    });
+
+    it ('should validate all properties if no property name is passed', function () {
+        var errorMap = testModel.validate();
+        expect(errorMap).to.not.be.null;
+        expect(errorMap.testProperty[0]).to.equal('Test property can not be empty');
+        expect(errorMap.secondTestProperty[0]).to.equal('Second test property can not be empty');
     });
 
 

@@ -13,7 +13,12 @@ describe('NotEmptyValidator', function () {
     it ('should implement the IValidatorObject interface', function () {
         expect(notEmptyValidator).to.have.all.keys('name');
 
-        expect(notEmptyValidator.validator).to.be.defined;
+        expect(notEmptyValidator.validate).to.be.defined;
+    });
+
+    it ('should treat undefined as invalid', function () {
+        expect(notEmptyValidator.validate(void 0)).to.be.false;
+        expect(notEmptyValidator.validate()).to.be.false;
     });
 
     it ('should treat empty strings as invalid', function () {

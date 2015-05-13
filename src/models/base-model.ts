@@ -5,6 +5,7 @@ export class BaseModel implements IBaseModel{
 
     public _validators: Object;
     public _errorMessages: Object;
+    public _properties: Array<string>;
 
     /**
      * check the validity of the model
@@ -50,14 +51,12 @@ export class BaseModel implements IBaseModel{
      */
     private _validateAllProperties(): Object {
         var errorMap = {};
-
-        for (let propertyName in this) {
-            if (this._validators.hasOwnProperty(propertyName)) {
-                let errors = this._runValidatorsForProperty(propertyName);
-                if (errors !== null) {
-                    errorMap[propertyName] = errors;
-                }
+        for (let propertyName of this._properties) {
+            let errors = this._runValidatorsForProperty(propertyName);
+            if (errors !== null) {
+                errorMap[propertyName] = errors;
             }
+
         }
         return errorMap;
     }

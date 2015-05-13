@@ -8,5 +8,6 @@ import { BaseModel } from './models/base-model';
 import { IValidatorObject } from './interfaces/i-validator-object';
 import { NotEmptyValidator } from './validators/not-empty-validator';
 import { notEmpty } from './decorators/not-empty';
+import { modelProp } from './decorators/model-prop';
 
-export { IValidatorObject, NotEmptyValidator, notEmpty , BaseModel };
+export { IValidatorObject, NotEmptyValidator, notEmpty, modelProp, BaseModel };
