@@ -20,8 +20,7 @@ describe ('BaseModel validate()', function () {
         testModel.testProperty = 'foo';
         var errorMap = testModel.validate();
 
-        expect(errorMap).to.be.null;
-
+        expect(errorMap).to.be.null
     });
 
 
