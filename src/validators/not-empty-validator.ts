@@ -3,7 +3,7 @@ import  { _ } from 'lodash';
 
 class NotEmptyValidator implements IValidatorObject {
 
-    public name = 'notNull';
+    public name = 'notEmpty';
 
     public validate(modelValue): boolean {
         if (typeof modelValue === 'string') {

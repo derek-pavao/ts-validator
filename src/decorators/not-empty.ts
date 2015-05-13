@@ -21,7 +21,7 @@ export let notEmpty = function (errorMessage: String) {
             target._errorMessages[name] = target._errorMessages[name] || {};
 
 
-            target._errorMessages[name].notNull = errorMessage;
+            target._errorMessages[name].notEmpty = errorMessage;
 
             target._validators[name].push(new NotEmptyValidator());
 
