@@ -3,7 +3,6 @@
  */
 
 
-//import { ErrorReport } from './models/error-report';
 import { BaseModel } from './models/base-model';
 import { IValidatorObject } from './interfaces/i-validator-object';
 import { NotEmptyValidator } from './validators/not-empty-validator';
