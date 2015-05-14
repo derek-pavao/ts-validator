@@ -45,3 +45,57 @@ Example output from the above person.validate() call
 }
 ```
    
+## Available Decorators
+
+### @modelProp
+@modelProp takes no parameters and is required on every property that you wish to have validated. If this is not present TypeScript Validator would not be able to validate properties that are undefined. This would make a validator like @notEmpty unreliable
+
+### @notEmpty
+@notEmpty takes one parameter, a string, which is an error message for this property if the validator fails.
+
+Example:
+```typescript
+import { BaseModel } from './libs/ts-validator/ts-validator';
+
+export class Person extends BaseModel {
+
+    @modelProp
+    @notEmpty('First name can not be empty')
+    public firstName: string;
+
+}
+```
+
+### @min
+@min takes one parameter, a configuration object with keys for 'min' and 'message'.
+
+Example:
+```typescript
+import { BaseModel } from './libs/ts-validator/ts-validator';
+
+export class Person extends BaseModel {
+
+    @modelProp
+    @min({min: 10, message: 'Age must be greater than 10'})
+    public age: number;
+
+}
+```
+
+### @max
+@max takes one parameter, a configuration object with keys for 'max' and 'message'.
+
+Example:
+```typescript
+import { BaseModel } from './libs/ts-validator/ts-validator';
+
+export class Person extends BaseModel {
+
+    @modelProp
+    @max({max: 105, message: 'Age must not be more than 105'})
+    public age: number;
+
+}
+```
+
+More to come soon...
