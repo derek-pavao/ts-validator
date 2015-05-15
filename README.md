@@ -22,7 +22,7 @@ export class Person extends BaseModel {
 }
 ```
 
- - Each of your models must extend BaseModel provided by ts-validator. BaseModel provides a public method called validate() which will allow you to validate your model
+ - Each of your models must extend BaseModel provided by ts-validator. BaseModel provides a public method called getErrors() which will allow you to validate your model
  - Every property of your model must have the @modelProp decorator. This is a product of JavaScript objects being dynamic.
  - the Person.firstName property also has a @notEmpty decorator with an error message string passed to it
    - This decorator will validate that the property is "not empty" which translates to not null, not undefined, not an empty object, not an empty array, not an empty string, and not a string that contains only spaces.
@@ -33,10 +33,10 @@ import { Person } from './path/to/person-model';
 
 var person = new Person();
 
-person.validate();
+person.getErrors();
 ```
 
-When calling person.validate() above, you will get an object of errors as a return value. The object structure is, keys will be the name of the property, and the value is an array of error messages for the validators that failed.
+When calling person.getErrors() above, you will get an object of errors as a return value. The object structure is, keys will be the name of the property, and the value is an array of error messages for the validators that failed.
 
 Example output from the above person.validate() call
 ```typescript
