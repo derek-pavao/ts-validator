@@ -4,6 +4,6 @@ export interface IBaseModel {
     _errorMessages: Object;
     _properties: Array<string>;
 
-    validate(): Object;
-    validate(propName: string): Object;
+    getErrors(): Object;
+    getErrors(propName: string): Object;
 }

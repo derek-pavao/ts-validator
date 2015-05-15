@@ -9,10 +9,10 @@ export class BaseModel implements IBaseModel{
 
     /**
      * check the validity of the model
-     * @param propertyName if present will validate only this property, else will validate all properties
+     * @param propertyName if present will getErrors only this property, else will getErrors all properties
      * @returns {{} | null} returns an object of error messages or null
      */
-    public validate(propertyName?: string) {
+    public getErrors(propertyName?: string) {
         var errorMap;
         if (propertyName) {
             errorMap = this._validateSingleProperty(propertyName);
@@ -28,8 +28,8 @@ export class BaseModel implements IBaseModel{
     }
 
     /**
-     * this.validate delegates to this method if propertyName was present
-     * @param propertyName the property in this model to validate
+     * this.getErrors delegates to this method if propertyName was present
+     * @param propertyName the property in this model to getErrors
      * @returns {{}} an object of error messages, keys are property names, values are an array of strings/messages
      * @private
      */
@@ -45,7 +45,7 @@ export class BaseModel implements IBaseModel{
     }
 
     /**
-     * this.validate delegates to this method if propertyName was NOT present
+     * this.getErrors delegates to this method if propertyName was NOT present
      * @returns {{}} an object of error messages, keys are property names, values are an array of strings/messages
      * @private
      */
