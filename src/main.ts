@@ -13,6 +13,7 @@ export { NotEmptyValidator } from './validators/not-empty-validator';
 export { MinValidator } from './validators/min-validator';
 export { MaxValidator } from './validators/max-validator';
 
+export { validatorFactory } from './validator-factory';
 export { notEmpty } from './decorators/not-empty';
 export { modelProp } from './decorators/model-prop';
 export { min } from './decorators/min';
