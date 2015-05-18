@@ -18,8 +18,7 @@
     }
   },
   "scripts": {
-    "test": "karma start --single-run",
-    "postinstall": "sudo npm install -g jspm && jspm install"
+    "test": "node_modules/karma/bin/karma start --single-run"
   },
   "main": "ts-validator.ts",
   "devDependencies": {
