@@ -122,7 +122,7 @@ import { IValidatorObject, IConfig } from '../libs/ng-ts-validator/ng-ts-validat
 
 export class NoDerpAllowedValidator implements IValidatorObject {
 
-    public name:string = 'noSpecialCharsValidator';
+    public name:string = 'noDerpAllowed';
     public config:IConfig;
     public defaultMessage = '{{propertyName}} can not contain any derp';
 
