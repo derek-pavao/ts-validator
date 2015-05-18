@@ -17,6 +17,10 @@
       "core-js": "npm:core-js@^0.9.4"
     }
   },
+  "scripts": {
+    "test": "karma start --single-run",
+    "postinstall": "jspm install && tsd reinstall --save"
+  },
   "main": "ts-validator.ts",
   "devDependencies": {
     "babel": "^5.1.13",
