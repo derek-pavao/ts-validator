@@ -98,4 +98,52 @@ export class Person extends BaseModel {
 }
 ```
 
+## Defining your own decorators / validators
+A validator is made up of two files. One to define the decorator and one to implement the validation logic.
+
+To define a decorator make use of the validatorFactory() function provided by ts-validator. For our example lets define a validator to not allow the word 'derp' in our input (@noDerpAllowed);
+
+```typescript
+// no-derp-allowed.ts
+
+import { IConfig, validatorFactory } from './libs/ts-validator';
+import { NoDerpAllowedValidator } from './no-derp-allowed-validator';
+
+
+export let noDerpAllowed = function (config: IConfig) {
+    return validatorFactory(new NoDerpAllowedValidator(config));
+};
+```
+In the example above we are importing the IConfig interface, and the validatorFactory function from ts-validator. The IConfig interface is a base interface defining what config object you pass to your decorator when using it. i.e. ``` @noDerpAllowed({message: 'no derp here plzzz'}) ``` Currently IConfig only enforces that you implement message. The validatorFactory funciton is a convenience function that will register the decorator with ts-validator. It take one parameter, a class that implements the IValidatorObject interface provided by ts-validator. In the example above its the NoDerpAllowedValidator class. We will look at that class next, before we do take note that the config object that is a parameter to the decorator is passed to the constructor of the validator class
+
+```typescript
+// no-derp-allowed-validator.ts
+import { IValidatorObject, IConfig } from '../libs/ng-ts-validator/ng-ts-validator';
+
+export class NoDerpAllowedValidator implements IValidatorObject {
+
+    public name:string = 'noSpecialCharsValidator';
+    public config:IConfig;
+    public defaultMessage = '{{propertyName}} can not contain any derp';
+
+
+
+    constructor(config:IConfig) {
+        this.config = config;
+     }
+
+
+    public validate(propertyValue:any):boolean {
+        return propertyValue.indexOf('derp') === -1;
+    }
+}
+```
+In the file above we are defining a validator class. IValidatorObject defines three properties, name, config, and defaultMessage, and one method validate that returns a boolean. True if the value passes validation false if it does not.
+
+The name property is to be set to a string equal to the name of the decorator defined in the previous step. The config object is the same object that was passed to the decorator in the last file. The defaultMessage property is an error message to use if one is not given when the decorator is used. It has one available template tag, {{propertyName}} which will be a human readable version of the property that was annotated with this decorator. (currently we only support camelCase property names, 'myAwesomeProperty' will 'become My Awesome Property').
+
+Finally the validate method takes the propertyValue as a parameter. From this method you are to return true if the propertyValue passes your validation or false if it does not.
+
+The decorators / validators in this repo are created in this manner. To see examples of decorator definitions check out ./src/decorators and for examples of their corresponding validator classes check out ./src/validators. There is also an example in this repo https://github.com/NextStepLiving/Angular1.4-TypeScript1.5-Starter/tree/ts-validator. This repo contains an example todo app that defines a ``` @noSpecialChars() ``` decorator. the files of interest can be found in ./app/decorators/no-special-chars.ts and ./app/decorators/no-special-chars-validator.ts
+
 More to come soon...
