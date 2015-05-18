@@ -99,7 +99,9 @@ export class Person extends BaseModel {
 ```
 
 ## Defining your own decorators / validators
-A validator is made up of two files. One to define the decorator and one to implement the validation logic.
+For general information on decorators check out this issue on the Microsoft/TypeScript repo https://github.com/Microsoft/TypeScript/issues/2249, or this repo by @wycats https://github.com/wycats/javascript-decorators
+
+In ts-validator a validator is made up of two files. One to define the decorator and one to implement the validation logic.
 
 To define a decorator make use of the validatorFactory() function provided by ts-validator. For our example lets define a validator to not allow the word 'derp' in our input (@noDerpAllowed);
 
