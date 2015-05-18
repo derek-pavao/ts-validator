@@ -6,6 +6,7 @@
 export { BaseModel } from './models/base-model';
 
 export { IValidatorObject } from './interfaces/i-validator-object';
+export { IConfig } from './interfaces/i-config';
 export { IMinConfig } from './interfaces/i-min-config';
 export { IMaxConfig } from './interfaces/i-max-config.ts';
 
