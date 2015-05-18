@@ -12,5 +12,5 @@ import { validatorFactory } from '../main';
  */
 export let min = function (config: IMinConfig) {
 
-    return validatorFactory('min', config.message, new MinValidator(config));
+    return validatorFactory(new MinValidator(config));
 };

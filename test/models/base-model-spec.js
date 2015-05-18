@@ -34,7 +34,7 @@ describe ('BaseModel getErrors()', function () {
         var errorMap = testModel.getErrors();
         expect(errorMap).to.not.be.null;
         expect(errorMap.testProperty[0]).to.equal('Test property can not be empty');
-        expect(errorMap.secondTestProperty[0]).to.equal('Second test property can not be empty');
+        expect(errorMap.secondTestProperty[0]).to.equal('Second Test Property can not be empty');
     });
 
 

@@ -4,10 +4,12 @@ import { _ } from 'lodash';
 
 export class MaxValidator implements IValidatorObject {
     public name = 'max';
+    public defaultMessage: string;
     public config: IMaxConfig;
 
     constructor(config: IMaxConfig) {
         this.config = config;
+        this.defaultMessage = `{{propertyName}} must be less than ${this.config.max}`;
     }
 
     validate(modelValue): boolean {

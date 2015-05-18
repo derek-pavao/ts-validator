@@ -20,6 +20,10 @@ describe ('notEmpty decorator', function () {
         expect(testModel._validators.testProperty).to.not.be.undefined
     });
 
+    it ('should generate default messages if one is not given', function () {
+        expect(testModel._errorMessages.secondTestProperty.notEmpty).to.equal('Second Test Property can not be empty');
+    });
+
 
 });
 

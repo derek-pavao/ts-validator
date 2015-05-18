@@ -9,9 +9,8 @@ import { validatorFactory } from '../main';
  * @param errorMessage the message to display if the validation fails
  * @returns {function(Object, string): undefined}
  */
-export let notEmpty = function (errorMessage: String) {
+export let notEmpty = function (errorMessage?) {
 
-    return validatorFactory('notEmpty', errorMessage, new NotEmptyValidator);
-
+    return validatorFactory(new NotEmptyValidator({message: errorMessage}));
 };
 

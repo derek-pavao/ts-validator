@@ -5,10 +5,12 @@ import { _ } from 'lodash';
 export class MinValidator  implements IValidatorObject {
 
     public name = 'min';
+    public defaultMessage: string;
     public config: IMinConfig;
 
     constructor(config: IMinConfig) {
         this.config = config;
+        this.defaultMessage = `{{propertyName}} must be greater than ${this.config.min}`;
     }
 
     public validate(modelValue): boolean {

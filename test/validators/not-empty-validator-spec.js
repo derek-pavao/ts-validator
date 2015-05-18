@@ -11,7 +11,7 @@ describe('NotEmptyValidator', function () {
     });
 
     it ('should implement the IValidatorObject interface', function () {
-        expect(notEmptyValidator).to.have.all.keys('name');
+        expect(notEmptyValidator).to.have.all.keys('name', 'defaultMessage', 'config');
 
         expect(notEmptyValidator.validate).to.be.defined;
     });

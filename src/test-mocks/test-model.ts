@@ -8,7 +8,7 @@ export class TestModel extends BaseModel {
     public testProperty: string;
 
     @modelProp
-    @notEmpty('Second test property can not be empty')
+    @notEmpty()
     public secondTestProperty: string;
 
 }

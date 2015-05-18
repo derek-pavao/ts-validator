@@ -1,9 +1,16 @@
-import { IValidatorObject } from '../main';
+import { IValidatorObject, IConfig } from '../main';
 import  { _ } from 'lodash';
 
 class NotEmptyValidator implements IValidatorObject {
 
     public name = 'notEmpty';
+    public defaultMessage: string;
+    public config: IConfig;
+
+    constructor(config: IConfig) {
+        this.config = config;
+        this.defaultMessage = '{{propertyName}} can not be empty';
+    }
 
     public validate(modelValue): boolean {
         if (typeof modelValue === 'string') {
