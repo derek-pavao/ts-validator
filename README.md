@@ -1,4 +1,6 @@
 #TypeScript Validator
+[![Build Status](https://travis-ci.org/NextStepLiving/ts-validator.svg?branch=master)](https://travis-ci.org/NextStepLiving/ts-validator)
+
 
 A set of annotations to provide model validation. Akin to Hibernate Validator
 
