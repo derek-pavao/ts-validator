@@ -99,6 +99,21 @@ export class Person extends BaseModel {
 }
 ```
 
+### @pattern
+@pattern takes one parameter, a configuration object withe keys for pattern, which is the regex pattern you want to match on, and message which is the error message to display if the value doesn't match the given pattern
+
+Example:
+```typescript
+import { BaseModel } from './libs/ts-validator/ts-validator';
+
+export class Person extends BaseModel {
+
+    @modelProp
+    @pattern({pattern: /^[0-9]{3}\-[0-9]{3}\-[0-9]{4}$/, message: 'Phone Number must be in the form xxx-xxx-xxxx')
+    public phoneNumber: string;
+}
+```
+
 ## Defining your own decorators / validators
 For general information on decorators check out this issue on the Microsoft/TypeScript repo https://github.com/Microsoft/TypeScript/issues/2249, or this repo by @wycats https://github.com/wycats/javascript-decorators
 
