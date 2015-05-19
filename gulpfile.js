@@ -11,7 +11,7 @@ var tsProject = $.typescript.createProject({
     declarationFiles: true,
     noExternalResolve: true,
     typescript: require('typescript'),
-    module: 'amd',
+    module: 'commonjs',
     target: 'ES5'
 });
 

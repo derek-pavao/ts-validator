@@ -58,7 +58,7 @@ module.exports = function(config) {
             options: {
                 optional: ['runtime'],
                 sourceMap: 'inline',
-                modules: 'amd'
+                modules: 'common'
             }
         },
 
