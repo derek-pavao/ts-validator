@@ -20,7 +20,7 @@ export class MinValidator  implements IValidatorObject {
 
         var num = Number(modelValue);
         if (_.isNaN(num) || !_.isNumber(num)) {
-            //throw new Error('the min validator requires that the model value can be parsed into a number');
+            // throw new Error('the min validator requires that the model value can be parsed into a number');
             return false;
         } else {
             return num >= this.config.min;

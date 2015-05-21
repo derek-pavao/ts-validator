@@ -71,7 +71,7 @@ export class BaseModel implements IBaseModel{
      */
     private _runValidatorsForProperty(propertyName: string) {
         var value = this[propertyName];
-        var errors = []
+        var errors = [];
         for (let validator of this._validators[propertyName]) {
 
             if (!validator.validate(value)) {

@@ -4,6 +4,7 @@
 var gulp = require('gulp');
 var jspm = require('jspm');
 var conf = require('./gulp.conf');
+var tslintRules = require('./tslint.json');
 var $ = require('gulp-load-plugins')({lazy: true});
 
 
@@ -32,6 +33,17 @@ gulp.task('typescript', function () {
             includeContent: true
         }))
         .pipe(gulp.dest('.tmp/'));
+});
+
+gulp.task('tslint', function () {
+    return gulp.src(conf.src.ts)
+        .pipe($.plumber())
+        .pipe($.tslint())
+        .pipe($.tslint.report($.tslintStylish, {
+            emitError: true,
+            sort: true,
+            bell: true
+        }));
 });
 
 gulp.task('scss', function () {
@@ -103,16 +115,24 @@ gulp.task('html-watcher', function () {
     });
 });
 
+gulp.task('tslint-watcher', function () {
+    return $.watch(conf.src.ts, function () {
+        gulp.start('tslint');
+    });
+});
+
 
 /**
  * Main Tasks
  */
 gulp.task('watch', [
-    'typescript-watcher'
+    'typescript-watcher',
+    'tslint-watcher'
 ]);
 
 gulp.task('dev-no-watch', [
-    'typescript'
+    'typescript',
+    'tslint'
 ]);
 
 gulp.task('dev', ['dev-no-watch'], function () {

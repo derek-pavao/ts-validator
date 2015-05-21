@@ -21,7 +21,7 @@ export class MaxValidator implements IValidatorObject {
 
         if (_.isNaN(num) || !_.isNumber(num)) {
             console.log('num', num);
-            //throw new Error('the max validator requires that the model value can be parsed into a number');
+            // throw new Error('the max validator requires that the model value can be parsed into a number');
             return false;
         } else {
             return num <= this.config.max;

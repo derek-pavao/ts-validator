@@ -2,16 +2,14 @@ import { BaseModel, IValidatorObject} from './main';
 
 
 let defaultMessageFactory = function (fieldName: string, validatorObject: IValidatorObject): string {
-
     let regex = new RegExp('([A-Z])', 'g');
     let displayFieldName = fieldName.replace(regex, function (match) {
         return ' ' + match;
     });
+
     displayFieldName = displayFieldName.charAt(0).toUpperCase() + displayFieldName.slice(1);
 
-    let defaultMessage = validatorObject.defaultMessage.replace(/\{\{propertyName\}\}/g, displayFieldName);
-
-    return defaultMessage;
+    return  validatorObject.defaultMessage.replace(/\{\{propertyName\}\}/g, displayFieldName);
 };
 
 
@@ -30,5 +28,5 @@ export let validatorFactory = function (validatorObject: IValidatorObject) {
             target._validators[name].push(validatorObject);
 
         }
-    }
+    };
 };

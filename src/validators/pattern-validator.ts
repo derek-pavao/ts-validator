@@ -1,13 +1,16 @@
 import { IValidatorObject, IPatternConfig } from '../main';
 
 
+
 export class PatternValidator implements IValidatorObject {
+
     public name: string = 'pattern';
     public defaultMessage: string = '{{propertyName}} is not in the correct format';
     public config: IPatternConfig;
 
     constructor(config: IPatternConfig) {
         this.config = config;
+        this.config.pattern.match
     }
 
     public validate(propertyValue: any): boolean {

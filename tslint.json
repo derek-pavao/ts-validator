@@ -1,0 +1,51 @@
+{
+  "rules": {
+    "align": [
+      true,
+      "parameters",
+      "arguments",
+      "statements"
+    ],
+    "class-name": true,
+    "comment-format": [
+      true,
+      "check-space",
+      "check-lowercase"
+    ],
+    "curly": true,
+    "forin": true,
+    "indent": [true, 4],
+    "interface-name": true,
+    "member-ordering": [
+      true,
+      "public-before-private",
+      "static-before-instance",
+      "variables-before-functions"
+    ],
+    "no-bitwise": true,
+    "no-duplicate-key": true,
+    "no-duplicate-variable": true,
+    "no-empty": true,
+    "no-eval": true,
+    "no-string-literal": true,
+    "no-trailing-comma": true,
+    "no-trailing-whitespace": true,
+    "no-unused-expression": true,
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-catch",
+      "check-else",
+      "check-whitespace"
+    ],
+    "radix": true,
+    "semicolon": true,
+    "tripple-equals": true,
+    "use-strict": true,
+    "variable-name": [
+      true,
+      "allow-leading-underscore"
+    ]
+
+  }
+}
