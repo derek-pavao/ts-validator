@@ -10,7 +10,6 @@ export class PatternValidator implements IValidatorObject {
 
     constructor(config: IPatternConfig) {
         this.config = config;
-        this.config.pattern.match
     }
 
     public validate(propertyValue: any): boolean {
