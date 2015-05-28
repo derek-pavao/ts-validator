@@ -15,6 +15,11 @@ let defaultMessageFactory = function (fieldName: string, validatorObject: IValid
 
 export let validatorFactory = function (validatorObject: IValidatorObject) {
     return function (target, name: string) {
+        console.log('arguments for ', name, arguments);
+        if (name.indexOf('_') === 0 && Object.getOwnPropertyDescriptor(target, name.slice(1))) {
+            name = name.slice(1);
+        }
+
         let validatorMessage = (validatorObject.config && validatorObject.config.message) ? validatorObject.config.message : defaultMessageFactory(name, validatorObject);
 
         if (target instanceof BaseModel) {
@@ -28,5 +33,7 @@ export let validatorFactory = function (validatorObject: IValidatorObject) {
             target._validators[name].push(validatorObject);
 
         }
+
     };
+
 };
