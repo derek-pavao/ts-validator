@@ -7,6 +7,16 @@ export class BaseModel implements IBaseModel{
     public _errorMessages: Object;
     public _properties: Array<string>;
 
+    constructor(json: Object) {
+        if (!_.isEmpty(json)) {
+            _.forEach(json, function (value, key) {
+                if (this._properties.indexOf(key) !== -1) {
+                    this[key] = value;
+                }
+            }.bind(this));
+        }
+    }
+
     /**
      * check the validity of the model
      * @param propertyName if present will getErrors only this property, else will getErrors all properties
