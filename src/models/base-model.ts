@@ -1,4 +1,4 @@
-import { _ } from 'lodash';
+import * as _  from 'lodash';
 import { IBaseModel } from '../interfaces/i-base-model';
 
 export class BaseModel implements IBaseModel{

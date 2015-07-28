@@ -1,5 +1,6 @@
 import { IValidatorObject, IConfig } from '../main';
-import  { _ } from 'lodash';
+import * as _ from 'lodash';
+
 
 class NotEmptyValidator implements IValidatorObject {
 

@@ -1,6 +1,7 @@
 import { IValidatorObject } from '../main';
 import { IMinConfig } from '../main';
-import { _ } from 'lodash';
+import * as _ from 'lodash';
+
 
 export class MinValidator  implements IValidatorObject {
 
