@@ -25,3 +25,4 @@ export { min } from './decorators/min';
 export { max } from './decorators/max';
 export { pattern } from './decorators/pattern';
 export { email } from './decorators/email';
+export { swaggerDef } from './decorators/swagger-def';

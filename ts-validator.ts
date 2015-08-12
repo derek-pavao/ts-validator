@@ -13,3 +13,4 @@ export { min } from './src/main';
 export { max } from './src/main';
 export { pattern } from './src/main';
 export { email } from './src/main';
+export { swaggerDef } from './src/main'

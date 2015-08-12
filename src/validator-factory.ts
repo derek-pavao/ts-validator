@@ -1,4 +1,4 @@
-import { BaseModel, IValidatorObject} from './main';
+import { BaseModel, IValidatorObject } from './main';
 
 
 let defaultMessageFactory = function (fieldName: string, validatorObject: IValidatorObject): string {
@@ -15,7 +15,7 @@ let defaultMessageFactory = function (fieldName: string, validatorObject: IValid
 
 export let validatorFactory = function (validatorObject: IValidatorObject) {
     return function (target, name: string) {
-        console.log('arguments for ', name, arguments);
+
         if (name.indexOf('_') === 0 && Object.getOwnPropertyDescriptor(target, name.slice(1))) {
             name = name.slice(1);
         }
