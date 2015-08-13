@@ -1,5 +1,13 @@
 {
-    "compilerOptions": {},
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "declarationFiles": true,
+        "noExternalResolve": false,
+        "noImplicityAny": false,
+        "noEmitOnError": false,
+        "module": "commonjs",
+        "target": "ES5"
+    },
     "filesGlob": [
         "./**/*.ts",
         "!./node_modules/**/*.ts"
