@@ -26,4 +26,8 @@ export interface IValidatorObject {
      */
     validate: IValidateFn;
 
+    ngModelController?: any;
+    ngFormController?: any;
+    model?: any;
+
 }
