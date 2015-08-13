@@ -41,6 +41,18 @@ gulp.task('tslint', function () {
         }));
 });
 
+gulp.task('typescript-watcher', function () {
+    return $.watch(conf.src.ts, function () {
+        gulp.start('typescript');
+    });
+});
+
+gulp.task('tslint-watcher', function () {
+    return $.watch(conf.src.ts, function () {
+        gulp.start('tslint');
+    });
+});
+
 
 
 /**
