@@ -15,3 +15,4 @@ export { pattern } from './src/main';
 export { email } from './src/main';
 export { swaggerDef } from './src/main'
 export { minLength } from './src/main';
+export { maxLength } from './src/main';

@@ -10,7 +10,7 @@ export class MinLengthValidator implements IValidatorObject {
 
     constructor(config: IMinLengthConfig) {
         this.config = config;
-        this.defaultMessage = `{{propertyName}} length must be greater than ${this.config.minLength}`;
+        this.defaultMessage = `{{propertyName}} length must be at least ${this.config.minLength}`;
     }
 
     public validate(modelValue: string): boolean {
