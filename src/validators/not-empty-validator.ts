@@ -8,7 +8,7 @@ class NotEmptyValidator implements IValidatorObject {
     public defaultMessage: string;
     public config: IConfig;
 
-    constructor(config: IConfig) {
+    constructor(config: IConfig = {message: ''}) {
         this.config = config;
         this.defaultMessage = '{{propertyName}} can not be empty';
     }

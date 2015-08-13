@@ -17,6 +17,7 @@ export { MinValidator } from './validators/min-validator';
 export { MaxValidator } from './validators/max-validator';
 export { PatternValidator } from './validators/pattern-validator';
 export { EmailValidator } from './validators/email-validator';
+export { IntegerValidator } from './validators/integer-validator';
 
 export { validatorFactory } from './validator-factory';
 export { notEmpty } from './decorators/not-empty';
