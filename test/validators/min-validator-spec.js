@@ -27,8 +27,8 @@ describe('MinValidator', function () {
         expect(minValidator.validate('9')).to.be.false;
     });
 
-    //it ('should thorw an error if it can not parse the modelValue', function () {
-    //    expect(minValidator.validate.bind(minValidator, 'dfslkjdfsjlk')).to.throw('the min validator requires that the model value can be parsed into a number');
-    //});
+    it.skip('should thorw an error if it can not parse the modelValue', function () {
+       expect(minValidator.validate.bind(minValidator, 'dfslkjdfsjlk')).to.throw('the min validator requires that the model value can be parsed into a number');
+    });
 
 });
