@@ -46,7 +46,7 @@ export let swaggerDef = function(swaggerDef) {
             if (typeof propDef.pattern !== 'undefined') {
                 validatorFactory(new PatternValidator({pattern: propDef.pattern}))(target.prototype, propertyName);
             }
-            console.log('propDef', propDef);
+
             if (typeof propDef.minimum !== 'undefined') {
 
                 validatorFactory(new MinValidator({min: propDef.minimum}))(target.prototype, propertyName);
