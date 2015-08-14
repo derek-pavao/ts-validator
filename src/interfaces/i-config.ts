@@ -1,3 +1,3 @@
 export interface IConfig {
-    message: string;
+    message?: string;
 }

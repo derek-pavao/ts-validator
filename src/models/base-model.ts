@@ -1,5 +1,6 @@
 import * as _  from 'lodash';
 import { IBaseModel } from '../interfaces/i-base-model';
+import { modelProp } from '../main';
 
 export class BaseModel implements IBaseModel{
 
@@ -82,10 +83,15 @@ export class BaseModel implements IBaseModel{
     private _runValidatorsForProperty(propertyName: string) {
         var value = this[propertyName];
         var errors = [];
-        for (let validator of this._validators[propertyName]) {
 
-            if (!validator.validate(value)) {
-                errors.push(this._errorMessages[propertyName][validator.name]);
+        if (typeof this._validators[propertyName] !== 'undefined') {
+            for (let i = 0; i < this._validators[propertyName].length; i++) {
+
+                let validator = this._validators[propertyName][i];
+
+                if (!validator.validate(value)) {
+                    errors.push(this._errorMessages[propertyName][validator.name]);
+                }
             }
         }
 

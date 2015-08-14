@@ -9,7 +9,7 @@ export class MaxValidator implements IValidatorObject {
 
     constructor(config: IMaxConfig) {
         this.config = config;
-        this.defaultMessage = `{{propertyName}} must be less than ${this.config.max}`;
+        this.defaultMessage = `{{propertyName}} must be at most ${this.config.max}`;
     }
 
     validate(modelValue): boolean {

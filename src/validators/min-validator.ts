@@ -11,7 +11,7 @@ export class MinValidator  implements IValidatorObject {
 
     constructor(config: IMinConfig) {
         this.config = config;
-        this.defaultMessage = `{{propertyName}} must be greater than ${this.config.min}`;
+        this.defaultMessage = `{{propertyName}} must be at least ${this.config.min}`;
     }
 
     public validate(modelValue): boolean {
