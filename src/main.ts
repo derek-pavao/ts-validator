@@ -13,6 +13,7 @@ export { IMinLengthConfig } from './interfaces/i-min-length-config';
 export { IMaxLengthConfig } from './interfaces/i-max-length-config';
 export { IPatternConfig } from './interfaces/i-pattern-config';
 export { IEmailConfig } from './interfaces/i-email-config';
+export { IAllowedValuesConfig } from './interfaces/i-allowed-values-config';
 
 export { NotEmptyValidator } from './validators/not-empty-validator';
 export { MinValidator } from './validators/min-validator';
@@ -22,6 +23,7 @@ export { MaxLengthValidator } from './validators/max-length-validator';
 export { PatternValidator } from './validators/pattern-validator';
 export { EmailValidator } from './validators/email-validator';
 export { IntegerValidator } from './validators/integer-validator';
+export { AllowedValuesValidator } from './validators/allowed-values-validator';
 
 export { validatorFactory } from './validator-factory';
 export { notEmpty } from './decorators/not-empty';
@@ -33,3 +35,4 @@ export { maxLength } from './decorators/max-length';
 export { pattern } from './decorators/pattern';
 export { email } from './decorators/email';
 export { swaggerDef } from './decorators/swagger-def';
+export { allowedValues } from './decorators/allowed-values';
