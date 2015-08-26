@@ -10,7 +10,7 @@ export class BaseModel implements IBaseModel{
 
     constructor(json?: Object) {
         if (!_.isEmpty(json)) {
-            _.forEach(json, function (value, key) {
+            _.forIn(json, function (value, key) {
                 if (this._properties.indexOf(key) !== -1) {
                     this[key] = value;
                 }
