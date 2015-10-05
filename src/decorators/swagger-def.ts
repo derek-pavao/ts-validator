@@ -69,10 +69,14 @@ export let swaggerDef = function(swaggerDef) {
  * loop go away
  */
 function alreadyHasValidator(target, propertyName: string, validator): boolean {
-    for (var i = 0; i < target.prototype._validators[propertyName].length; i++) {
-        let existingValidator = target.prototype._validators[propertyName][i];
-        if (existingValidator instanceof validator) {
-            return true;
+    if (typeof target.prototype._validators === 'undefined' || typeof target.prototype._validators[propertyName] === 'undefined') {
+        return false;
+    } else {
+        for (var i = 0; i < target.prototype._validators[propertyName].length; i++) {
+            let existingValidator = target.prototype._validators[propertyName][i];
+            if (existingValidator instanceof validator) {
+                return true;
+            }
         }
     }
 
