@@ -22,37 +22,39 @@ export let swaggerDef = function(swaggerDef) {
 
         forEach(target.prototype._properties, function (propertyName: string) {
             let propDef = swaggerDef.properties[propertyName];
+            if (typeof propDef === 'undefined') {
+                return;
+            }
 
             if (includes(swaggerDef.required, propertyName)) {
                 validatorFactory(new NotEmptyValidator())(target.prototype, propertyName);
             }
 
-            if (propDef.type === 'integer') {
+            if (propDef.type === 'integer' && !alreadyHasValidator(target, propertyName, IntegerValidator)) {
                 validatorFactory(new IntegerValidator())(target.prototype, propertyName);
             }
 
-            if (typeof propDef.minLength !== 'undefined') {
+            if (typeof propDef.minLength !== 'undefined' && !alreadyHasValidator(target, propertyName, MinLengthValidator)) {
                 validatorFactory(new MinLengthValidator({minLength: propDef.minLength}))(target.prototype, propertyName);
             }
 
-            if (typeof propDef.maxLength !== 'undefined') {
+            if (typeof propDef.maxLength !== 'undefined' && !alreadyHasValidator(target, propertyName, MaxLengthValidator)) {
                 validatorFactory(new MaxLengthValidator({maxLength: propDef.maxLength}))(target.prototype, propertyName);
             }
 
-            if (typeof propDef.enum !== 'undefined') {
+            if (typeof propDef.enum !== 'undefined' && !alreadyHasValidator(target, propertyName, AllowedValuesValidator)) {
                 validatorFactory(new AllowedValuesValidator({values: propDef.enum}))(target.prototype, propertyName);
             }
 
-            if (typeof propDef.pattern !== 'undefined') {
-                validatorFactory(new PatternValidator({pattern: propDef.pattern}))(target.prototype, propertyName);
+            if (typeof propDef.pattern !== 'undefined' && !alreadyHasValidator(target, propertyName, PatternValidator)) {
+                    validatorFactory(new PatternValidator({pattern: propDef.pattern}))(target.prototype, propertyName);
             }
 
-            if (typeof propDef.minimum !== 'undefined') {
-
+            if (typeof propDef.minimum !== 'undefined' && !alreadyHasValidator(target, propertyName, MinValidator)) {
                 validatorFactory(new MinValidator({min: propDef.minimum}))(target.prototype, propertyName);
             }
 
-            if (typeof propDef.maximum !== 'undefined') {
+            if (typeof propDef.maximum !== 'undefined' && !alreadyHasValidator(target, propertyName, MaxValidator)) {
                 validatorFactory(new MaxValidator({max: propDef.maximum}))(target.prototype, propertyName);
             }
 
@@ -60,3 +62,19 @@ export let swaggerDef = function(swaggerDef) {
     };
 
 };
+
+
+/**
+ * TODO(derek): Consider re-implementing storing validators in a map instead of an array to make this
+ * loop go away
+ */
+function alreadyHasValidator(target, propertyName: string, validator): boolean {
+    for (var i = 0; i < target.prototype._validators[propertyName].length; i++) {
+        let existingValidator = target.prototype._validators[propertyName][i];
+        if (existingValidator instanceof validator) {
+            return true;
+        }
+    }
+
+    return false;
+}
