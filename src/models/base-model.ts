@@ -1,6 +1,7 @@
 import * as _  from 'lodash';
 import { IBaseModel } from '../interfaces/i-base-model';
 import { modelProp } from '../main';
+import { attachStaticValidators } from '../decorators/swagger-def';
 
 export class BaseModel implements IBaseModel{
 
@@ -36,6 +37,15 @@ export class BaseModel implements IBaseModel{
         } else {
             return errorMap;
         }
+    }
+
+    public updateValidatorsOnDiscriminatorChange(discriminatorValue: any, swaggerDef, fullSwaggerDef) {
+        var allOf = fullSwaggerDef.api.definitions[discriminatorValue].allOf;
+        this._validators = {};
+
+        var newSwaggerDef = _.merge.apply(this, [{}].concat(allOf));
+
+        attachStaticValidators(this, newSwaggerDef);
     }
 
     /**
