@@ -20,7 +20,12 @@ export let validatorFactory = function (validatorObject: IValidatorObject) {
             name = name.slice(1);
         }
 
-        let validatorMessage = (validatorObject.config && validatorObject.config.message) ? validatorObject.config.message : defaultMessageFactory(name, validatorObject);
+        let validatorMessage;
+        if (typeof target._propNameForErrors !== 'undefined' && typeof target._propNameForErrors[name] !== 'undefined') {
+            validatorMessage = (validatorObject.config && validatorObject.config.message) ? validatorObject.config.message : defaultMessageFactory(target._propNameForErrors[name], validatorObject);
+        } else {
+            validatorMessage = (validatorObject.config && validatorObject.config.message) ? validatorObject.config.message : defaultMessageFactory(name, validatorObject);
+        }
 
         if (target instanceof BaseModel) {
 
