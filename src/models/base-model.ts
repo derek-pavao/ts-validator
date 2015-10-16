@@ -19,6 +19,15 @@ export class BaseModel implements IBaseModel{
         }
     }
 
+    public toJSON() {
+        var obj = {};
+        for (var i = 0; i < this._properties.length; i++) {
+            let prop = this._properties[i];
+            obj[prop] = this[prop];
+        }
+        return obj;
+    }
+
     /**
      * check the validity of the model
      * @param propertyName if present will getErrors only this property, else will getErrors all properties

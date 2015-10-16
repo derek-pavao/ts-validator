@@ -71,7 +71,7 @@ export let swaggerDef = function(swaggerDef, fullSwaggerDef?) {
 
         if (swaggerDef.discriminator) {
             target.prototype._discriminator = swaggerDef.discriminator;
-            attachDynamicValidator(target, swaggerDef.discriminator, swaggerDef, fullSwaggerDef);
+            return attachDynamicValidator(target, swaggerDef.discriminator, swaggerDef, fullSwaggerDef);
         }
     };
 
@@ -84,37 +84,29 @@ function attachDynamicValidator(target: any, discriminator, swaggerDef, fullSwag
      * TODO(derek): Make this work if the model already implements
      * a setter/getter for this property
      */
-    Object.defineProperty(target.prototype, discriminator, {
-        get: function() {
-            return this['_' + discriminator];
-        },
-        set: function (newValue) {
+    var newConstructor = function () {
 
-            if (this['_' + discriminator] !== newValue) {
-                this.updateValidatorsOnDiscriminatorChange(newValue, swaggerDef, fullSwaggerDef);
-                this['_' + discriminator] = newValue;
+        Object.defineProperty(this, discriminator, {
+            get: function() {
+                return this['_' + discriminator];
+            },
+            set: function (newValue) {
 
+                if (this['_' + discriminator] !== newValue) {
+                    this.updateValidatorsOnDiscriminatorChange(newValue, swaggerDef, fullSwaggerDef);
+                    this['_' + discriminator] = newValue;
+
+                }
             }
-        }
-    });
+        });
 
-    var oldToJSON = target.prototype.toJSON;
-    target.prototype.toJSON = function () {
-        var obj = (typeof oldToJSON === 'undefined') ? {} : oldToJSON.apply(this, arguments);
-
-        for (var prop in obj) {
-            if (prop === '_' + discriminator) {
-                obj[discriminator] = obj[prop];
-                delete obj[prop];
-            }
-        }
-
-        return obj;
+        target.prototype.constructor.apply(this, arguments);
     };
 
+    newConstructor.prototype = target.prototype;
 
-
-}
+    return newConstructor;
+};
 
 
 
