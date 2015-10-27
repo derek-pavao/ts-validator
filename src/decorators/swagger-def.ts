@@ -59,9 +59,9 @@ export let attachStaticValidators = function(obj: any, swaggerDef: any) {
 /**
  * Decorator function
  */
-export let swaggerDef = function(swaggerDef, fullSwaggerDef?) {
+export let swaggerDef = function(swaggerDef: any, fullSwaggerDef?) {
     return function (target: any) {
-        if (!isEqual(keys(swaggerDef.properties).sort(), target.prototype._properties.sort())) {
+        if (!isEqual(keys(swaggerDef.properties).sort(), getSortedServerProperties(target))) {
             console.error('Swagger definition', swaggerDef);
             console.error('Model Properties', target.prototype._properties);
             throw new Error(target.name + ' Properties did not match properties in the Swagger definition');
@@ -76,6 +76,19 @@ export let swaggerDef = function(swaggerDef, fullSwaggerDef?) {
     };
 
 };
+
+function getSortedServerProperties(target: any) {
+    var ret = [];
+    for (var i = 0; i < target.prototype._properties.length; i++) {
+        let prop = target.prototype._properties[i];
+
+        if (!target.prototype._ignoreProperties || !target.prototype._ignoreProperties[prop]) {
+            ret.push(prop);
+        }
+    }
+
+    return ret.sort();
+}
 
 function attachDynamicValidator(target: any, discriminator, swaggerDef, fullSwaggerDef) {
 

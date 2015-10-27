@@ -9,6 +9,7 @@ export { validatorFactory } from './src/main';
 
 export { notEmpty } from './src/main';
 export { modelProp } from './src/main';
+export { jsonIgnore } from './src/main';
 export { min } from './src/main';
 export { max } from './src/main';
 export { pattern } from './src/main';
@@ -17,3 +18,4 @@ export { swaggerDef } from './src/main'
 export { minLength } from './src/main';
 export { maxLength } from './src/main';
 export { allowedValues } from './src/main';
+export { customValidator } from './src/main';

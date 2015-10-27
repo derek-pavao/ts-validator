@@ -8,6 +8,7 @@ export class BaseModel implements IBaseModel{
     public _validators: Object;
     public _errorMessages: Object;
     public _properties: Array<string>;
+    public _ignoreProperties: Object;
 
     constructor(json?: Object) {
         if (!_.isEmpty(json)) {
@@ -23,7 +24,9 @@ export class BaseModel implements IBaseModel{
         var obj = {};
         for (var i = 0; i < this._properties.length; i++) {
             let prop = this._properties[i];
-            obj[prop] = this[prop];
+            if (!this._ignoreProperties[prop]) {
+                obj[prop] = this[prop];
+            }
         }
         return obj;
     }
@@ -107,6 +110,7 @@ export class BaseModel implements IBaseModel{
             for (let i = 0; i < this._validators[propertyName].length; i++) {
 
                 let validator = this._validators[propertyName][i];
+                validator.model = this;
 
                 if (!validator.validate(value)) {
                     errors.push(this._errorMessages[propertyName][validator.name]);
