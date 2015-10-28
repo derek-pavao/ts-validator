@@ -24,7 +24,7 @@ export class BaseModel implements IBaseModel{
         var obj = {};
         for (var i = 0; i < this._properties.length; i++) {
             let prop = this._properties[i];
-            if (!this._ignoreProperties[prop]) {
+            if (!this._ignoreProperties || !this._ignoreProperties[prop]) {
                 obj[prop] = this[prop];
             }
         }
