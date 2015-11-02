@@ -12,11 +12,26 @@ export class AllowedValuesValidator implements IValidatorObject {
 
     }
 
-    public validate(modelValue: string) {
+    public validate(modelValue: string|number) {
         if (isEmpty(modelValue)) {
             return true;
         }
 
-        return includes(this.config.values, modelValue);
+        for (let i = 0; i < this.config.values.length; i++) {
+            let currValue = this.config.values[i];
+
+            if (typeof currValue === 'number') {
+                modelValue = Number(modelValue);
+            }
+
+            if (currValue === modelValue) {
+                return true
+            }
+        }
+
+
+        return false;
+
+        // return includes(this.config.values, modelValue);
     }
 }
