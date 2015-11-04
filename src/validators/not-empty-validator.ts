@@ -16,6 +16,8 @@ class NotEmptyValidator implements IValidatorObject {
     public validate(modelValue): boolean {
         if (typeof modelValue === 'string') {
             return !_.isEmpty(modelValue.trim());
+        } else if (typeof modelValue === 'number') {
+            return true;
         } else {
             return !_.isEmpty(modelValue);
         }

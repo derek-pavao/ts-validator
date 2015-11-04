@@ -29,6 +29,14 @@ describe('NotEmptyValidator', function () {
         expect(notEmptyValidator.validate('  ')).to.be.false;
     });
 
+    it ('should treat numbers as valid', function () {
+        expect(notEmptyValidator.validate(20)).to.be.true;
+    });
+
+    it ('should treat the number 0 as a valid value', function () {
+        expect(notEmptyValidator.validate(0)).to.be.true;
+    });
+
     it ('should treat an empty object as invalid', function () {
         expect(notEmptyValidator.validate({})).to.be.false;
     });
