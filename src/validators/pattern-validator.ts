@@ -1,5 +1,5 @@
 import { IValidatorObject, IPatternConfig } from '../main';
-
+import { isEmpty } from 'lodash';
 
 
 export class PatternValidator implements IValidatorObject {
@@ -13,6 +13,9 @@ export class PatternValidator implements IValidatorObject {
     }
 
     public validate(propertyValue: any): boolean {
+        if (typeof propertyValue !== 'number' && isEmpty(propertyValue)) {
+            return true;
+        }
 
         if (typeof propertyValue === 'string') {
             return propertyValue.match(this.config.pattern) !== null;

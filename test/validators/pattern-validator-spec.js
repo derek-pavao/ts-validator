@@ -11,6 +11,10 @@ describe ('PatternValidator', function () {
         patternValidator = new PatternValidator(config);
     });
 
+    it ('should treate empty string values as valid', function () {
+        expect(patternValidator.validate('')).to.be.true;
+    });
+
 
     it ('should identify 900-649-2568 as a valid pattern', function () {
         expect(patternValidator.validate('900-649-2568')).to.be.true;
@@ -19,6 +23,5 @@ describe ('PatternValidator', function () {
     it ('should identify (900)-649-2568 as an invalid pattern', function () {
         expect(patternValidator.validate('(900)-649-2568')).to.be.false;
     });
-
 
 });
