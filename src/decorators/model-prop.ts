@@ -31,8 +31,8 @@ var decoratorFactory = function (config?: IModelPropConfig) {
 };
 
 export interface ImodelProp {
-    (target: any, name: string)
-    (config: any)
+    (target: any, name: string);
+    (config: any);
 }
 
 export let modelProp: ImodelProp = function (config?: IModelPropConfig) {

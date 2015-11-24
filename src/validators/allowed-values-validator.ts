@@ -25,7 +25,7 @@ export class AllowedValuesValidator implements IValidatorObject {
             }
 
             if (currValue === modelValue) {
-                return true
+                return true;
             }
         }
 

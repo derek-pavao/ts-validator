@@ -53,7 +53,7 @@ export let attachStaticValidators = function(obj: any, swaggerDef: any) {
 
     });
 
-}
+};
 
 
 /**
