@@ -9,7 +9,7 @@ export class IntegerValidator implements IValidatorObject {
 
     constructor(config: IConfig = {message: ''}) {
         this.config = config;
-        this.defaultMessage = '{{propertyName}} must be an number';
+        this.defaultMessage = '{{propertyName}} must be a number';
     }
 
     public validate(modelValue): boolean {
