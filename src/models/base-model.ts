@@ -31,6 +31,31 @@ export class BaseModel implements IBaseModel{
         return obj;
     }
 
+    public isEmpty(): boolean {
+        var ret = true;
+
+        _.forEach(this._properties, (propertyName: string) => {
+            let value = this[propertyName];
+            if (value instanceof BaseModel) {
+                if (!value.isEmpty()) {
+                    ret = false;
+                    return false;
+                }
+            } else {
+
+                if (typeof value === 'number' || typeof value === 'boolean') {
+                    ret = false;
+                    return false;
+                } else if (!_.isEmpty(value)) {
+                    ret = false;
+                    return false;
+                }
+            }
+        });
+
+        return ret;
+    }
+
     /**
      * check the validity of the model
      * @param propertyName if present will getErrors only this property, else will getErrors all properties
