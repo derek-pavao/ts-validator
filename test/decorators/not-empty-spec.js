@@ -21,7 +21,7 @@ describe ('notEmpty decorator', function () {
     });
 
     it ('should generate default messages if one is not given', function () {
-        expect(testModel._errorMessages.secondTestProperty.notEmpty).to.equal('Second Test Property can not be empty');
+        expect(testModel._errorMessages.secondTestProperty.notEmpty).to.equal('Second Test Property cannot be empty');
     });
 
 

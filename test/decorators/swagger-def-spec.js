@@ -12,8 +12,8 @@ describe ('swaggerDef decorator', function () {
 
         var errors = testSwaggerModel.getErrors();
 
-        expect(errors.firstName.indexOf('First Name can not be empty')).to.not.equal(-1);
-        expect(errors.lastName.indexOf('Last Name can not be empty')).to.not.equal(-1);
+        expect(errors.firstName.indexOf('First Name cannot be empty')).to.not.equal(-1);
+        expect(errors.lastName.indexOf('Last Name cannot be empty')).to.not.equal(-1);
         expect(errors.middleName).to.be.undefined;
     });
 
@@ -39,7 +39,6 @@ describe ('swaggerDef decorator', function () {
         testSwaggerModel.lastName = 'sfdjklsfjklsdf';
 
         var errors = testSwaggerModel.getErrors();
-
         expect(errors.lastName.indexOf('Last Name length must be at most 5')).to.not.equal(-1);
         expect(errors.username.indexOf('Username length must be at most 10')).to.not.equal(-1);
     });
