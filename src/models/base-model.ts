@@ -11,13 +11,11 @@ export class BaseModel implements IBaseModel{
     public _ignoreProperties: Object;
 
     constructor(json?: Object) {
-        if (!_.isEmpty(json)) {
-            _.forIn(json, function (value, key) {
-                if (this._properties.indexOf(key) !== -1) {
-                    this[key] = value;
-                }
-            }.bind(this));
-        }
+        json = json || {};
+
+        _.forEach(this._properties, (propertyName) => {
+            this[propertyName] = json[propertyName];
+        });
     }
 
     public toJSON() {
