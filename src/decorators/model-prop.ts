@@ -35,7 +35,7 @@ export interface ImodelProp {
     (config: any);
 }
 
-export let modelProp: ImodelProp = function (config?: IModelPropConfig) {
+export let modelProp: ImodelProp = function (config?: IModelPropConfig): ImodelProp | void {
 
     if (arguments.length > 1) {
         decoratorFactory().apply(this, arguments);

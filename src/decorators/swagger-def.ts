@@ -71,7 +71,7 @@ export let swaggerDef = function(swaggerDef: any, fullSwaggerDef?) {
 
         if (swaggerDef.discriminator) {
             target.prototype._discriminator = swaggerDef.discriminator;
-            return attachDynamicValidator(target, swaggerDef.discriminator, swaggerDef, fullSwaggerDef);
+            attachDynamicValidator(target, swaggerDef.discriminator, swaggerDef, fullSwaggerDef);
         }
     };
 
