@@ -9,6 +9,11 @@ export class MaxValidator implements IValidatorObject {
 
     constructor(config: IMaxConfig) {
         this.config = config;
+
+        if (config.hasOwnProperty('name')) {
+            this.name = config.name;
+        }
+
         this.defaultMessage = `{{propertyName}} must be at most ${this.config.max}`;
     }
 

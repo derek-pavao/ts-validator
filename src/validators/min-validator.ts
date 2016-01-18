@@ -11,6 +11,11 @@ export class MinValidator  implements IValidatorObject {
 
     constructor(config: IMinConfig) {
         this.config = config;
+
+        if (config.hasOwnProperty('name')) {
+            this.name = config.name;
+        }
+
         this.defaultMessage = `{{propertyName}} must be at least ${this.config.min}`;
     }
 

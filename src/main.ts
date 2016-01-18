@@ -24,6 +24,7 @@ export { MaxLengthValidator } from './validators/max-length-validator';
 export { PatternValidator } from './validators/pattern-validator';
 export { EmailValidator } from './validators/email-validator';
 export { IntegerValidator } from './validators/integer-validator';
+export { FloatValidator } from './validators/float-validator';
 export { AllowedValuesValidator } from './validators/allowed-values-validator';
 export { CustomValidator } from './validators/custom-validator';
 
