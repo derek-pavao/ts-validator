@@ -14,6 +14,9 @@ export class IntegerValidator implements IValidatorObject {
 
     public validate(modelValue): boolean {
 
+        if (!_.isNumber(modelValue) && _.isEmpty(modelValue)) {
+            return true;
+        }
         return _.isInteger(Number(modelValue));
     }
 }
