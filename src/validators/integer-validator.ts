@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash';
+import  * as _ from 'lodash';
 import { IValidatorObject, IConfig } from '../main';
 
 
@@ -13,11 +13,7 @@ export class IntegerValidator implements IValidatorObject {
     }
 
     public validate(modelValue): boolean {
-        if (typeof modelValue === 'number' || isEmpty(modelValue)) {
-            return true;
-        }
 
-        return !isNaN(parseInt(modelValue, 10));
-
+        return _.isInteger(Number(modelValue));
     }
 }

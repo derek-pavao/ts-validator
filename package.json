@@ -8,7 +8,7 @@
       "angular-new-router": "npm:angular-new-router@^0.5.3",
       "babel": "npm:babel-core@^5.1.13",
       "babel-core": "npm:babel-core@^5.1.13",
-      "lodash": "npm:lodash@^3.8.0",
+      "lodash": "npm:lodash@^4.0.0",
       "requirejs-browser": "npm:requirejs-browser@^2.1.9"
     },
     "devDependencies": {
@@ -65,5 +65,8 @@
     "serve-index": "^1.6.3",
     "sinon": "^1.14.1",
     "typescript": "^1.5.3"
+  },
+  "dependencies": {
+    "lodash": "^4.0.0"
   }
 }
