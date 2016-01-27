@@ -23,7 +23,7 @@ export let attachStaticValidators = function(obj: any, swaggerDef: any) {
             validatorFactory(new NotEmptyValidator())(obj, propertyName);
         }
 
-        if ((propDef.type === 'integer' || propDef.type === 'number') && typeof propDef.enum !== 'undefined' && !alreadyHasValidator(obj, propertyName, IntegerValidator)) {
+        if ((propDef.type === 'integer' || propDef.type === 'number') && !alreadyHasValidator(obj, propertyName, IntegerValidator)) {
             validatorFactory(new IntegerValidator())(obj, propertyName);
         }
 
