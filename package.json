@@ -22,7 +22,7 @@
   },
   "name": "ts-validator",
   "main": "ts-validator.ts",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "devDependencies": {
     "babel": "^5.1.13",
     "body-parser": "^1.12.3",
